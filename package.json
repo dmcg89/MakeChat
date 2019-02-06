@@ -13,5 +13,10 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^5.4.9",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
   }
 }
