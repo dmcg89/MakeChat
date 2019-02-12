@@ -5,7 +5,7 @@ const app = express();
 const server = require('http').Server(app);
 
 //  Socket.io
-const io = require('socket.io')(server);
+const io = require('socket.io').listen(server);
 
 const onlineUsers = {};
 // save the channels in this object
