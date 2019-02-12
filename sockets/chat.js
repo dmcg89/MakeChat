@@ -19,4 +19,8 @@ module.exports = (io, socket, onlineUsers) => {
   socket.on('get online users', () => {
     socket.emit('get online useres', onlineUsers);
   });
+
+  socket.on('new channel', (newChannel) => {
+    console.log(newChannel);
+  });
 };

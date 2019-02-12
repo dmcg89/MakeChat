@@ -9,7 +9,7 @@ $(document).ready(()=>{
 
   $('#createUserBtn').click((e)=>{
     e.preventDefault();
-    if($('#usernameInput').val().length > 0){
+    if($('#usernameInput').val().length > 0) {
       socket.emit('new user', $('#usernameInput').val());
       // Save the current user when created
       currentUser = $('#usernameInput').val();
@@ -29,9 +29,19 @@ $(document).ready(()=>{
         sender : currentUser,
         message : message,
       });
-      $('#chatInput').val("");
+      $('#chatInput').val('');
     }
   });
+
+  $('#newChannelBtn').click( () => {
+  let newChannel = $('#newChannelInput').val();
+
+  if(newChannel.length > 0){
+    // Emit the new channel to the server
+    socket.emit('new channel', newChannel);
+    $('#newChannelInput').val("");
+  }
+})
 
   //socket listeners
   socket.on('new user', (username) => {
@@ -53,14 +63,14 @@ $(document).ready(()=>{
   });
   //  get online users socket listener
   socket.on('get online users', (onlineUsers) => {
-      for (username in onlineUsers){
+      for (const username in onlineUsers){
           $('.usersOnline').append(`<p class="userOnline">${username}</p>`)
       }
   });
   //Refresh the online user list
 socket.on('user has left', (onlineUsers) => {
   $('.usersOnline').empty();
-  for(username in onlineUsers){
+  for(const username in onlineUsers) {
     $('.usersOnline').append(`<p>${username}</p>`);
   }
 });
