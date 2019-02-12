@@ -9,7 +9,7 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   console.log('🔌 New user connected! 🔌');
-  require('./sockets/chat.js')(io, socket)
+  require('./sockets/chat.js')(io, socket);
 });
 
 //  express view engine for handlbars
@@ -26,5 +26,5 @@ app.get('/', (req, res) => {
 });
 
 server.listen('3000', () => {
-  console.log('server listening on Port 3000')
+  console.log('server listening on Port 3000');
 });
