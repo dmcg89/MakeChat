@@ -7,9 +7,10 @@ const server = require('http').Server(app);
 //  Socket.io
 const io = require('socket.io')(server);
 
+const onlineUsers = {};
 io.on('connection', (socket) => {
   console.log('🔌 New user connected! 🔌');
-  require('./sockets/chat.js')(io, socket);
+  require('./sockets/chat.js')(io, socket, onlineUsers);
 });
 
 //  express view engine for handlbars
