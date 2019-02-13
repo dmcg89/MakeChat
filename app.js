@@ -8,6 +8,7 @@ const server = require('http').Server(app);
 const io = require('socket.io').listen(server);
 
 const onlineUsers = {};
+const PORT = process.env.PORT || 3000;
 // save the channels in this object
 let channels = {'General' : []}
 
@@ -29,5 +30,6 @@ app.get('/', (req, res) => {
   res.render('index.handlebars');
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port);
+server.listen(PORT, () => {
+  console.log(`Server Listening on ${PORT}`);
+});
